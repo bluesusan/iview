@@ -29,6 +29,7 @@
         <span :class="[prefixCls + '-total']" v-if="showTotal">
             <slot>{{ t('i.page.total') }} {{ total }} <template v-if="total <= 1">{{ t('i.page.item') }}</template><template v-else>{{ t('i.page.items') }}</template></slot>
         </span>
+        <li title="1" :class="firstPageClasses" @click="changePage(1)"><a>首页</a></li>
         <li
             :title="t('i.page.prev')"
             :class="prevClasses"
@@ -50,6 +51,7 @@
             @click="next">
             <a><i class="ivu-icon ivu-icon-ios-arrow-right"></i></a>
         </li>
+        <li :title="allPages" v-if="allPages > 1" :class="lastPageClasses" @click="changePage(allPages)"><a>末页</a></li>
         <Options
             :show-sizer="showSizer"
             :page-size="currentPageSize"
